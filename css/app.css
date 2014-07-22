@@ -1,0 +1,10 @@
+body {
+    background: rgba(0,0,0,0.8);
+}
+
+.quiz-content {
+    margin-top: 40%;
+    background: white;
+    padding: 40px 50px;
+    min-height: 400px;
+}
