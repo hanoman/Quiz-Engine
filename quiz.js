@@ -65,7 +65,11 @@ $(document).ready(function() {
                     $(document.createElement('label')).attr({
                         for: "choice_" + i
                     }).html(choiceValue).add("<br>").appendTo(answerEl);
+
                 }
+                $(document.createElement('small')).attr({
+                    class: 'error hidden',
+                }).html("Choose an answer").appendTo(answerEl)
             },
             print_btn: function() {
                 $(document.createElement('a')).attr({
@@ -96,8 +100,15 @@ $(document).ready(function() {
             },
             next_question: function() {
                 quizEngine.check_answer();
-                quizEngine.currentQuestionIndex++;
-                quizEngine.run_quiz();
+                var radios = $(answerEl).find('input:checked');
+                var errorMsg = $('#answers').find('.error')
+                if ($(radios).size() > 0) { // check if the radio checked
+                    // errorMsg.addClass('hidden'); // hide error message
+                    quizEngine.currentQuestionIndex++;
+                    quizEngine.run_quiz();
+                } else {
+                    errorMsg.removeClass('hidden'); //display error message
+                }
             },
             check_answer: function() {
                 var radios = $(answerEl).find('input');
@@ -111,7 +122,9 @@ $(document).ready(function() {
                         } else {
                             console.log('wrong answer')
                         }
+
                     }
+
                 }
             }
         } //quizEngine end
