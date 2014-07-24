@@ -55,13 +55,13 @@ $(document).ready(function () {
             }
         },
         clear_question: function () { // clear everything before displaying next answer
-            $(questionsEl).empty();
-            $(answerEl).empty();
-            $('.button-wrapper').empty();
+            $(questionsEl).hide().empty();
+            $(answerEl).hide().empty();
+            $('.button-wrapper').hide().empty();
         },
         print_question: function () { // print questions
             var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
-            $('#question').html(questionString);
+            $('#question').fadeIn().html(questionString);
         },
         print_answers: function () { // print answers
             var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
@@ -81,6 +81,10 @@ $(document).ready(function () {
             $(document.createElement('small')).attr({
                 class: 'error hidden',
             }).html("Choose an answer").appendTo(answerEl)
+
+            $(answerEl).fadeIn()
+            $('.button-wrapper').fadeIn();
+
         },
         print_next_btn: function () { // print next button
             $(document.createElement('a')).attr({
