@@ -1,26 +1,26 @@
 $(document).ready(function() {
     // define questions
-    var allQuestions = [{
-        question: '"Somebody poisoned the waterhole".This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?',
-        choices: ['Toy Story', 'Toy Story 2', 'Toy Story 3'],
-        correctAnswer: 0
-    }, {
-        question: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?',
-        choices: ['Up', 'Finding Nemo', 'A Bug\'s Life'],
-        correctAnswer: 2
-    }, {
-        question: 'Kids these days. They just don\'t get scared like they used to.',
-        choices: ['Monster, Inc', 'The Incredibles', 'Monster University', 'A Bug\'s Life'],
-        correctAnswer: 0
-    }, {
-        question: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?',
-        choices: ['Monster, Inc', 'Finding Nemo', 'Incredibles', 'Monster University'],
-        correctAnswer: 1
-    }, {
-        question: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?',
-        choices: ['The Incredibles', 'Monster University', 'A Bug\'s Life', 'Up'],
-        correctAnswer: 3
-    }];
+//    var allQuestions = [{
+//        question: '"Somebody poisoned the waterhole".This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?',
+//        choices: ['Toy Story', 'Toy Story 2', 'Toy Story 3'],
+//        correctAnswer: 0
+//    }, {
+//        question: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?',
+//        choices: ['Up', 'Finding Nemo', 'A Bug\'s Life'],
+//        correctAnswer: 2
+//    }, {
+//        question: 'Kids these days. They just don\'t get scared like they used to.',
+//        choices: ['Monster, Inc', 'The Incredibles', 'Monster University', 'A Bug\'s Life'],
+//        correctAnswer: 0
+//    }, {
+//        question: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?',
+//        choices: ['Monster, Inc', 'Finding Nemo', 'Incredibles', 'Monster University'],
+//        correctAnswer: 1
+//    }, {
+//        question: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?',
+//        choices: ['The Incredibles', 'Monster University', 'A Bug\'s Life', 'Up'],
+//        correctAnswer: 3
+//    }];
 
     // get static html elements and define global nextBtn element
     var questionsEl = $('#question'),
@@ -116,6 +116,13 @@ $(document).ready(function() {
             }
         } //quizEngine end
 
-    quizEngine.run_quiz();
+
+
+    $.getJSON( "js/quiz-data.json", function(data){
+        allQuestions = data;
+        quizEngine.run_quiz(); //run the app
+    });
+
+//    quizEngine.run_quiz();
 
 });

@@ -4,9 +4,10 @@
     <list default="true" id="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" name="Default" comment="" />
     <ignored path="jsQuiz.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/quiz.js" changelist="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" time="1405562901503" ignored="false" />
+    <file path="/quiz.js" changelist="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" time="1406508745920" ignored="false" />
     <file path="/index.html" changelist="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" time="1405559610232" ignored="false" />
     <file path="/dummy.xml" changelist="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" time="1405559460238" ignored="false" />
+    <file path="/quiz2.js" changelist="13f4a825-733e-40ff-ae8f-c98c81e9cbbe" time="1406508025194" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +29,26 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="quiz.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="quiz.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/quiz.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="86" column="31" selection-start="3992" selection-end="3992" vertical-scroll-proportion="0.3382353">
+                <state line="92" column="35" selection-start="4328" selection-end="4328" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <marker date="1406509147411" expanded="true" signature="80:1331" placeholder="[...]" />
+                    <marker date="1406509147411" expanded="true" signature="81:343" placeholder="{&quot;question&quot;: '&quot;Somebody poisoned the waterhole&quot;.This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?'...}" />
+                    <marker date="1406509147411" expanded="true" signature="345:610" placeholder="{&quot;question&quot;: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?'...}" />
+                    <marker date="1406509147411" expanded="true" signature="612:830" placeholder="{&quot;question&quot;: 'Kids these days. They just don\'t get scared like they used to.'...}" />
+                    <marker date="1406509147411" expanded="true" signature="832:1060" placeholder="{&quot;question&quot;: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?'...}" />
+                    <marker date="1406509147411" expanded="true" signature="1062:1330" placeholder="{&quot;question&quot;: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?'...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="quiz-data.json" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/quiz-data.json">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="20" column="2" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.4857143">
                   <folding />
                 </state>
               </provider>
@@ -50,19 +67,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="quiz.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="quiz.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/quiz.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="113" column="20" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="quiz2.js" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/quiz2.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="79" column="31" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.20361991">
+                <state line="18" column="10" selection-start="1063" selection-end="1063" vertical-scroll-proportion="0.38548753">
                   <folding />
                 </state>
               </provider>
@@ -81,13 +89,15 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/quiz2.js" />
+        <option value="$PROJECT_DIR$/js/quiz-data.json" />
         <option value="$PROJECT_DIR$/quiz.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
@@ -124,8 +134,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -157,7 +167,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -242,6 +252,36 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="8" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="20" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1406509147411" expanded="true" signature="80:1331" placeholder="[...]" />
+            <marker date="1406509147411" expanded="true" signature="81:343" placeholder="{&quot;question&quot;: '&quot;Somebody poisoned the waterhole&quot;.This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?'...}" />
+            <marker date="1406509147411" expanded="true" signature="345:610" placeholder="{&quot;question&quot;: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?'...}" />
+            <marker date="1406509147411" expanded="true" signature="612:830" placeholder="{&quot;question&quot;: 'Kids these days. They just don\'t get scared like they used to.'...}" />
+            <marker date="1406509147411" expanded="true" signature="832:1060" placeholder="{&quot;question&quot;: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?'...}" />
+            <marker date="1406509147411" expanded="true" signature="1062:1330" placeholder="{&quot;question&quot;: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="31" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="21" selection-start="1272" selection-end="1304" vertical-scroll-proportion="0.0">
           <folding />
         </state>
@@ -250,28 +290,37 @@
     <entry file="file://$PROJECT_DIR$/quiz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="121" column="20" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1406509147411" expanded="true" signature="80:1331" placeholder="[...]" />
+            <marker date="1406509147411" expanded="true" signature="81:343" placeholder="{&quot;question&quot;: '&quot;Somebody poisoned the waterhole&quot;.This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?'...}" />
+            <marker date="1406509147411" expanded="true" signature="345:610" placeholder="{&quot;question&quot;: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?'...}" />
+            <marker date="1406509147411" expanded="true" signature="612:830" placeholder="{&quot;question&quot;: 'Kids these days. They just don\'t get scared like they used to.'...}" />
+            <marker date="1406509147411" expanded="true" signature="832:1060" placeholder="{&quot;question&quot;: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?'...}" />
+            <marker date="1406509147411" expanded="true" signature="1062:1330" placeholder="{&quot;question&quot;: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="79" column="31" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="38" selection-start="3487" selection-end="3487" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="31" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.20361991">
-          <folding />
+          <folding>
+            <marker date="1406509147411" expanded="true" signature="80:1331" placeholder="[...]" />
+            <marker date="1406509147411" expanded="true" signature="81:343" placeholder="{&quot;question&quot;: '&quot;Somebody poisoned the waterhole&quot;.This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?'...}" />
+            <marker date="1406509147411" expanded="true" signature="345:610" placeholder="{&quot;question&quot;: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?'...}" />
+            <marker date="1406509147411" expanded="true" signature="612:830" placeholder="{&quot;question&quot;: 'Kids these days. They just don\'t get scared like they used to.'...}" />
+            <marker date="1406509147411" expanded="true" signature="832:1060" placeholder="{&quot;question&quot;: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?'...}" />
+            <marker date="1406509147411" expanded="true" signature="1062:1330" placeholder="{&quot;question&quot;: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?'...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -282,9 +331,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quiz2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="0" selection-start="5027" selection-end="5145" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="20" selection-start="5324" selection-end="5324" vertical-scroll-proportion="0.0">
+        <state line="92" column="35" selection-start="4328" selection-end="4328" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1406509147411" expanded="true" signature="80:1331" placeholder="[...]" />
+            <marker date="1406509147411" expanded="true" signature="81:343" placeholder="{&quot;question&quot;: '&quot;Somebody poisoned the waterhole&quot;.This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?'...}" />
+            <marker date="1406509147411" expanded="true" signature="345:610" placeholder="{&quot;question&quot;: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?'...}" />
+            <marker date="1406509147411" expanded="true" signature="612:830" placeholder="{&quot;question&quot;: 'Kids these days. They just don\'t get scared like they used to.'...}" />
+            <marker date="1406509147411" expanded="true" signature="832:1060" placeholder="{&quot;question&quot;: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?'...}" />
+            <marker date="1406509147411" expanded="true" signature="1062:1330" placeholder="{&quot;question&quot;: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/quiz-data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="2" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.4857143">
           <folding />
         </state>
       </provider>
