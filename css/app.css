@@ -8,3 +8,13 @@ body {
     padding: 40px 50px;
     min-height: 400px;
 }
+
+
+small.error.hidden {
+visibility: hidden;
+
+}
+
+#back-btn {
+    margin-right: 10px;
+}
