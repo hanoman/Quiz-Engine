@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // define questions
     // var allQuestions = [{
@@ -38,7 +38,9 @@ $(document).ready(function() {
 
         currentQuestionIndex: 0,
         score: 0,
-        run_quiz: function() { // runs to print each question
+        run_quiz: function () { // runs to print each question
+
+
             if (this.currentQuestionIndex < allQuestions.length) { //check if it's the last questions or not
                 this.clear_question();
                 this.print_question();
@@ -49,16 +51,16 @@ $(document).ready(function() {
                 this.display_score();
             }
         },
-        clear_question: function() { // clear everything before displaying next answer
+        clear_question: function () { // clear everything before displaying next answer
             $(questionsEl).hide().empty();
             $(answerEl).hide().empty();
             $('.button-wrapper').hide().empty();
         },
-        print_question: function() { // print questions
+        print_question: function () { // print questions
             var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
             $('#question').fadeIn().html(questionString);
         },
-        print_answers: function() { // print answers
+        print_answers: function () { // print answers
             var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
             for (i = 0; i < numberOfAnswer; i++) {
                 var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
@@ -74,46 +76,46 @@ $(document).ready(function() {
                 }).html(choiceValue).add("<br>").appendTo(answerEl);
             }
             $(document.createElement('small')).attr({
-                class: 'error hidden',
+                class: 'error hidden'
             }).html("Choose an answer").appendTo(answerEl);
 
             $(answerEl).fadeIn();
             $('.button-wrapper').fadeIn();
 
         },
-        print_next_btn: function() { // print next button
+        print_next_btn: function () { // print next button
             $(document.createElement('a')).attr({
                 class: "button tiny radius",
                 href: "#",
                 id: "next-btn"
             })
                 .html("Next")
-                .click(function(e) {
+                .click(function (e) {
                     e.preventDefault();
                     quizEngine.next_question();
                 })
                 .appendTo($('.button-wrapper'));
         },
-        print_back_btn: function() { // print back button
+        print_back_btn: function () { // print back button
             $(document.createElement('a')).attr({
                 class: "button tiny radius",
                 href: "",
                 id: "back-btn"
             })
                 .html("Back")
-                .click(function(e) {
+                .click(function (e) {
                     e.preventDefault();
                     quizEngine.prev_question();
                 })
                 .prependTo($('.button-wrapper'));
             if (this.currentQuestionIndex == 0) { // display back button if it's not the first question
-                $("#back-btn").addClass('disabled').unbind('click').click(function(e) {
+                $("#back-btn").addClass('disabled').unbind('click').click(function (e) {
                     return false;
                 });
             }
 
         },
-        display_score: function() { // display total score
+        display_score: function () { // display total score
             quizEngine.clear_question();
             var scoreTotal = "Your score is " + quizEngine.score;
             $(document.createElement('div')).attr({
@@ -122,7 +124,7 @@ $(document).ready(function() {
                 'data-alert': ''
             }).html(scoreTotal).appendTo(scoreEl);
         },
-        next_question: function() { // go to next question
+        next_question: function () { // go to next question
             quizEngine.check_answer();
             var radiosChecked = $(answerEl).find('input:checked');
             var errorMsg = $('#answers').find('.error');
@@ -135,17 +137,17 @@ $(document).ready(function() {
             }
             quizEngine.load_answer();
         },
-        prev_question: function() { // go to previous question
+        prev_question: function () { // go to previous question
             quizEngine.currentQuestionIndex--;
             quizEngine.run_quiz();
             quizEngine.load_answer();
         },
-        load_answer: function() { // load the previous answered choice
+        load_answer: function () { // load the previous answered choice
             var radios = $(answerEl).find('input');
             var userAnsIndex = allQuestions[quizEngine.currentQuestionIndex].userAnswer;
             $(radios[userAnsIndex]).prop("checked", true);
         },
-        check_answer: function() { // check answer
+        check_answer: function () { // check answer
             var radios = $(answerEl).find('input');
             for (var i = 0; i < radios.length; i++) {
                 if ($(radios[i]).is(':checked')) {
@@ -162,21 +164,53 @@ $(document).ready(function() {
                 }
             }
         },
-        check_login: function() { // check log in info
+        check_login: function () { // check log in info
 
-            $('#submitUserInfo').on('click', function() {
-
-                var login_status = quizEngine.validate_login();
-
-
+            var name = [];
+            var name_exists = false;
+            $('#submitUserInfo').on('click', function () {
+                var username = $('#nameVal');
+                var email = $('#emailVal');
+                var usernameValue = username.val().toLowerCase();
+                var emailValue = email.val();
+                var login_status = quizEngine.validate_login(usernameValue, emailValue);
+                if (login_status) {
+//                    console.log('login true')
+                    if (!localStorage.username) {
+//                        console.log('no localStorage.username')
+                        name.push(usernameValue);
+                        localStorage.username = JSON.stringify(name);
+//                        console.log(usernameValue)
+//                        console.log(name)
+                    } else {
+//                        console.log('exist localStorage.username')
+                        name = JSON.parse(localStorage.username);
+                        console.log(name)
+                        for (var n in name) {
+                            if (usernameValue === name[n]) {
+                                name_exists = true;
+//                                console.log('name exists')
+                            }
+                        }
+                        if (!name_exists) {
+                            name.push(usernameValue);
+                            localStorage.username = JSON.stringify(name);
+                        }
+                    }
+                    $('a.close-reveal-modal').trigger('click'); // hide login form
+                    $('.greeting').show();
+                } else {
+//                    console.log('login false')
+                    username.val('');
+                    email.val('');
+//                    console.log('wrong uname and password')
+                }
             });
 
         },
-        validate_login: function() {
+        validate_login: function (usernameValue, emailValue) {
             var username = $('#nameVal');
             var email = $('#emailVal');
-            var usernameValue = username.val().toLowerCase();
-            var emailValue = email.val();
             var nameRegEx = /^[^\\\/&]*$/;
             var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             var dataCheck = $('.data-check');
@@ -205,6 +239,7 @@ $(document).ready(function() {
                 emailValid = false;
             }
 
+
             if (emailValid) {
                 email.next(dataCheck).removeClass('error');
             } else {
@@ -220,16 +255,25 @@ $(document).ready(function() {
                 return false;
             }
 
+        },
+        set_cookie : function() {
+
+        },
+        get_cookie : function() {
+
         }
 
     }; //quizEngine end
 
-    $.getJSON("js/quiz-data.json", function(data) {
+    // init user login
+    $('#userLogin').foundation('reveal', 'open');
+    quizEngine.check_login();
+
+    $.getJSON("js/quiz-data.json", function (data) {
         allQuestions = data;
         quizEngine.run_quiz(); //run the app
     });
 
     // quizEngine.run_quiz(); //to debug
-    quizEngine.check_login(); //to debug
 
 });

@@ -25,3 +25,8 @@ visibility: hidden;
 .data-check.error {
     visibility: visible;
 }
+
+
+.greeting {
+    display: none;
+}
