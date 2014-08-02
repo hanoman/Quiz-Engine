@@ -36,213 +36,193 @@ $(document).ready(function() {
 
     var quizEngine = {
 
-            currentQuestionIndex: 0,
-            score: 0,
-            run_quiz: function() { // runs to print each question
-                if (this.currentQuestionIndex < allQuestions.length) { //check if it's the last questions or not
-                    this.clear_question();
-                    this.print_question();
-                    this.print_answers();
-                    this.print_next_btn();
-                    this.print_back_btn();
-                } else {
-                    this.display_score();
-                }
-            },
-            clear_question: function() { // clear everything before displaying next answer
-                $(questionsEl).hide().empty();
-                $(answerEl).hide().empty();
-                $('.button-wrapper').hide().empty();
-            },
-            print_question: function() { // print questions
-                var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
-                $('#question').fadeIn().html(questionString);
-            },
-            print_answers: function() { // print answers
-                var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
-                for (i = 0; i < numberOfAnswer; i++) {
-                    var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
-                    $(document.createElement('input')).attr({
-                        value: choiceValue,
-                        type: "radio",
-                        name: "currentAnswer",
-                        class: "radio-answer",
-                        id: "choice_" + i
-                    }).appendTo(answerEl);
-                    $(document.createElement('label')).attr({
-                        for: "choice_" + i
-                    }).html(choiceValue).add("<br>").appendTo(answerEl);
-                }
-                $(document.createElement('small')).attr({
-                    class: 'error hidden',
-                }).html("Choose an answer").appendTo(answerEl)
+        currentQuestionIndex: 0,
+        score: 0,
+        run_quiz: function() { // runs to print each question
+            if (this.currentQuestionIndex < allQuestions.length) { //check if it's the last questions or not
+                this.clear_question();
+                this.print_question();
+                this.print_answers();
+                this.print_next_btn();
+                this.print_back_btn();
+            } else {
+                this.display_score();
+            }
+        },
+        clear_question: function() { // clear everything before displaying next answer
+            $(questionsEl).hide().empty();
+            $(answerEl).hide().empty();
+            $('.button-wrapper').hide().empty();
+        },
+        print_question: function() { // print questions
+            var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
+            $('#question').fadeIn().html(questionString);
+        },
+        print_answers: function() { // print answers
+            var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
+            for (i = 0; i < numberOfAnswer; i++) {
+                var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
+                $(document.createElement('input')).attr({
+                    value: choiceValue,
+                    type: "radio",
+                    name: "currentAnswer",
+                    class: "radio-answer",
+                    id: "choice_" + i
+                }).appendTo(answerEl);
+                $(document.createElement('label')).attr({
+                    for: "choice_" + i
+                }).html(choiceValue).add("<br>").appendTo(answerEl);
+            }
+            $(document.createElement('small')).attr({
+                class: 'error hidden',
+            }).html("Choose an answer").appendTo(answerEl);
 
-                $(answerEl).fadeIn()
-                $('.button-wrapper').fadeIn();
+            $(answerEl).fadeIn();
+            $('.button-wrapper').fadeIn();
 
-            },
-            print_next_btn: function() { // print next button
-                $(document.createElement('a')).attr({
-                    class: "button tiny radius",
-                    href: "#",
-                    id: "next-btn"
+        },
+        print_next_btn: function() { // print next button
+            $(document.createElement('a')).attr({
+                class: "button tiny radius",
+                href: "#",
+                id: "next-btn"
+            })
+                .html("Next")
+                .click(function(e) {
+                    e.preventDefault();
+                    quizEngine.next_question();
                 })
-                    .html("Next")
-                    .click(function(e) {
-                        e.preventDefault();
-                        quizEngine.next_question();
-                    })
-                    .appendTo($('.button-wrapper'));
-            },
-            print_back_btn: function() { // print back button
-                $(document.createElement('a')).attr({
-                    class: "button tiny radius",
-                    href: "",
-                    id: "back-btn"
+                .appendTo($('.button-wrapper'));
+        },
+        print_back_btn: function() { // print back button
+            $(document.createElement('a')).attr({
+                class: "button tiny radius",
+                href: "",
+                id: "back-btn"
+            })
+                .html("Back")
+                .click(function(e) {
+                    e.preventDefault();
+                    quizEngine.prev_question();
                 })
-                    .html("Back")
-                    .click(function(e) {
-                        e.preventDefault();
-                        quizEngine.prev_question();
-                    })
-                    .prependTo($('.button-wrapper'));
-                if (this.currentQuestionIndex == 0) { // display back button if it's not the first question
-                    $("#back-btn").addClass('disabled').unbind('click').click(function(e) {
-                        return false;
-                    })
-                }
-
-            },
-            display_score: function() { // display total score
-                quizEngine.clear_question();
-                var scoreTotal = "Your score is " + quizEngine.score
-                $(document.createElement('div')).attr({
-                    class: "alert-box success radius",
-                    id: "score",
-                    'data-alert': ''
-                }).html(scoreTotal).appendTo(scoreEl);
-            },
-            next_question: function() { // go to next question
-                quizEngine.check_answer();
-                var radiosChecked = $(answerEl).find('input:checked');
-                var errorMsg = $('#answers').find('.error');
-
-                if ($(radiosChecked).size() > 0) { // check if the radio checked, otherwise display error message
-                    quizEngine.currentQuestionIndex++;
-                    quizEngine.run_quiz();
-                } else {
-                    errorMsg.removeClass('hidden');
-                }
-                quizEngine.load_answer();
-            },
-            prev_question: function() { // go to previous question
-                quizEngine.currentQuestionIndex--;
-                quizEngine.run_quiz();
-                quizEngine.load_answer();
-            },
-            load_answer: function() { // load the previous answered choice
-                var radios = $(answerEl).find('input');
-                var userAnsIndex = allQuestions[quizEngine.currentQuestionIndex].userAnswer;
-                $(radios[userAnsIndex]).prop("checked", true);
-            },
-            check_answer: function() { // check answer
-                var radios = $(answerEl).find('input');
-                for (var i = 0; i < radios.length; i++) {
-                    if ($(radios[i]).is(':checked')) {
-                        var value = radios[i].value;
-                        var correct_answer_index = allQuestions[quizEngine.currentQuestionIndex].correctAnswer;
-                        var currentCorrectAnswer = allQuestions[quizEngine.currentQuestionIndex].choices[correct_answer_index];
-                        if (value == currentCorrectAnswer) {
-                            quizEngine.score++;
-                        } else {
-                            console.log('wrong answer');
-                        }
-                        // save current answer to allQuestions array
-                        allQuestions[quizEngine.currentQuestionIndex].userAnswer = i;
-                    }
-                }
-            },
-            check_login: function() { // check log in info
-
-                $('#submitUserInfo').on('click', function() {
-                    var username = $('#nameVal');
-                    // var usernameValue = username.val().toLowerCase();
-                    var email = $('#emailVal');
-                    // var emailValue = email.val();
-                    // var nameRegEx = /^[^\\\/&]*$/;
-                    // var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                    // var dataCheck = $('.data-check');
-
-                    // if (usernameValue === '' || usernameValue === null) {
-                    //     username.next(dataCheck).addClass('error');
-                    // } else if (usernameValue.match(nameRegEx)) {
-                    //     username.next($('error')).removeClass('error');
-                    // } else {
-                    //     username.next(dataCheck).addClass('error');
-                    // }
-
-                    // if (emailValue === '' || emailValue === null) {
-                    //     email.next(dataCheck).addClass('error');
-                    // } else if (emailValue.match(emailRegEx)) {
-                    //     email.next($('error')).removeClass('error');
-                    // } else {
-                    //     email.next(dataCheck).addClass('error');
-                    // }
-                    var login_status = quizEngine.validate_login(email, username);
-                    // console.log(login_status);
+                .prependTo($('.button-wrapper'));
+            if (this.currentQuestionIndex == 0) { // display back button if it's not the first question
+                $("#back-btn").addClass('disabled').unbind('click').click(function(e) {
+                    return false;
                 });
-
-            },
-            validate_login: function(uname, eaddr) {
-
-                var usernameValue = uname.val().toLowerCase();
-                var emailValue = eaddr.val();
-                var nameRegEx = /^[^\\\/&]*$/;
-                var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                var dataCheck = $('.data-check');
-                var usernameValid;
-                var emailValid;
-
-
-
-
-                if (usernameValue === '' || usernameValue === null) {
-                    uname.next(dataCheck).addClass('error');
-                    console.log('a valid')
-
-                } else if (usernameValue.match(nameRegEx)) {
-                    uname.next($('error')).removeClass('error');
-                    usernameValid = true;
-                    console.log('name valid')
-                } else {
-                    uname.next(dataCheck).addClass('error');
-                    console.log('b valid')
-
-                }
-
-                if (emailValue === '' || emailValue === null) {
-                    eaddr.next(dataCheck).addClass('error');
-                } else if (emailValue.match(emailRegEx)) {
-                    eaddr.next($('error')).removeClass('error');
-                    emailValid = true;
-                    console.log('email valid')
-                } else {
-                    eaddr.next(dataCheck).addClass('error');
-                }
-
-                // if (usernameValid === null || usernameValid === "" || emailValid === null || emailValid === "") {
-                //     $('#login_needed').show();
-                //     console.log('all null');
-                //     return false;
-                // } else {
-                //     return true;
-                //     console.log('all valid');
-
-                // }
-
             }
 
-        } //quizEngine end
+        },
+        display_score: function() { // display total score
+            quizEngine.clear_question();
+            var scoreTotal = "Your score is " + quizEngine.score;
+            $(document.createElement('div')).attr({
+                class: "alert-box success radius",
+                id: "score",
+                'data-alert': ''
+            }).html(scoreTotal).appendTo(scoreEl);
+        },
+        next_question: function() { // go to next question
+            quizEngine.check_answer();
+            var radiosChecked = $(answerEl).find('input:checked');
+            var errorMsg = $('#answers').find('.error');
+
+            if ($(radiosChecked).size() > 0) { // check if the radio checked, otherwise display error message
+                quizEngine.currentQuestionIndex++;
+                quizEngine.run_quiz();
+            } else {
+                errorMsg.removeClass('hidden');
+            }
+            quizEngine.load_answer();
+        },
+        prev_question: function() { // go to previous question
+            quizEngine.currentQuestionIndex--;
+            quizEngine.run_quiz();
+            quizEngine.load_answer();
+        },
+        load_answer: function() { // load the previous answered choice
+            var radios = $(answerEl).find('input');
+            var userAnsIndex = allQuestions[quizEngine.currentQuestionIndex].userAnswer;
+            $(radios[userAnsIndex]).prop("checked", true);
+        },
+        check_answer: function() { // check answer
+            var radios = $(answerEl).find('input');
+            for (var i = 0; i < radios.length; i++) {
+                if ($(radios[i]).is(':checked')) {
+                    var value = radios[i].value;
+                    var correct_answer_index = allQuestions[quizEngine.currentQuestionIndex].correctAnswer;
+                    var currentCorrectAnswer = allQuestions[quizEngine.currentQuestionIndex].choices[correct_answer_index];
+                    if (value == currentCorrectAnswer) {
+                        quizEngine.score++;
+                    } else {
+                        console.log('wrong answer');
+                    }
+                    // save current answer to allQuestions array
+                    allQuestions[quizEngine.currentQuestionIndex].userAnswer = i;
+                }
+            }
+        },
+        check_login: function() { // check log in info
+
+            $('#submitUserInfo').on('click', function() {
+
+                var login_status = quizEngine.validate_login();
+
+
+            });
+
+        },
+        validate_login: function() {
+            var username = $('#nameVal');
+            var email = $('#emailVal');
+            var usernameValue = username.val().toLowerCase();
+            var emailValue = email.val();
+            var nameRegEx = /^[^\\\/&]*$/;
+            var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var dataCheck = $('.data-check');
+            var usernameValid;
+            var emailValid;
+
+            if (usernameValue === '' || usernameValue === null) {
+                usernameValid = false;
+            } else if (usernameValue.match(nameRegEx)) {
+                usernameValid = true;
+            } else {
+                usernameValid = false;
+            }
+
+            if (usernameValid) {
+                username.next(dataCheck).removeClass('error');
+            } else {
+                username.next(dataCheck).addClass('error');
+            }
+
+            if (emailValue === '' || emailValue === null) {
+                emailValid = false;
+            } else if (emailValue.match(emailRegEx)) {
+                emailValid = true;
+            } else {
+                emailValid = false;
+            }
+
+            if (emailValid) {
+                email.next(dataCheck).removeClass('error');
+            } else {
+                email.next(dataCheck).addClass('error');
+            }
+
+            if (emailValid && usernameValid) {
+                // console.log('all valid');
+                return true;
+            } else {
+                $('#login_needed').show();
+                // console.log('all null');
+                return false;
+            }
+
+        }
+
+    }; //quizEngine end
 
     $.getJSON("js/quiz-data.json", function(data) {
         allQuestions = data;
