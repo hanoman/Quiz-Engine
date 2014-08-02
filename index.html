@@ -1,44 +1,75 @@
 <!doctype html>
 <html class="no-js" lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>JavaScript Quiz</title>
-<link rel="stylesheet" href="css/foundation.css" />
-<link rel="stylesheet" href="css/app.css" />
-<script src="js/vendor/modernizr.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Quiz</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/vendor/modernizr.js"></script>
 </head>
+
 <body>
-<div class="row">
-    <div class="large-8 columns large-centered">
-        <div class="quiz-content">
-            <div class="row">
-                <div class="columns large-12">
-                    <div id="question"></div>
+    <div class="row">
+        <div class="large-8 columns large-centered">
+            <!-- <a href="#" data-reveal-id="userLogin">Log in</a>
+
+        <div id="userLogin" class="reveal-modal medium " data-reveal> -->
+            <form>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Name
+                            <input type="text" placeholder="" id="nameVal">
+                            <small class="data-check">Enter name</small>
+                        </label>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Email address
+                            <input type="text" placeholder="" id="emailVal">
+                            <small class="data-check">Enter email address</small>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="columns large-12 ">
-                    <form action="" id="answers">
-                    </form>
-                    <!-- <small class="error">Invalid entry</small> -->
+                <div class="row">
+                    <div class="large-12 columns">
+                        <a href="#" class="button small" id="submitUserInfo">Default Button</a>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="columns large-12">
-                    <div class="button-wrapper"></div>
-                    <div id="score-wrapper"></div>
+            </form>
+            <a class="close-reveal-modal">&#215;</a>
+            <!-- </div> -->
+
+
+            <div class="quiz-content">
+                <div class="row">
+                    <div class="columns large-12">
+                        <div id="question"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-12 ">
+                        <form action="" id="answers">
+                        </form>
+                        <!-- <small class="error">Invalid entry</small> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns large-12">
+                        <div class="button-wrapper"></div>
+                        <div id="score-wrapper"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-<script src="js/vendor/jquery.js"></script>
-<script src="js/foundation.min.js"></script>
-<script src="quiz.js"></script>
-<script>
-  $(document).foundation();
-</script>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="quiz.js"></script>
+    <script>
+    $(document).foundation();
+    </script>
 </body>
+
 </html>

@@ -18,3 +18,10 @@ visibility: hidden;
 #back-btn {
     margin-right: 10px;
 }
+
+.data-check {
+    visibility: hidden;
+}
+.data-check.error {
+    visibility: visible;
+}

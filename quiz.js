@@ -161,7 +161,87 @@ $(document).ready(function() {
                         allQuestions[quizEngine.currentQuestionIndex].userAnswer = i;
                     }
                 }
+            },
+            check_login: function() { // check log in info
+
+                $('#submitUserInfo').on('click', function() {
+                    var username = $('#nameVal');
+                    // var usernameValue = username.val().toLowerCase();
+                    var email = $('#emailVal');
+                    // var emailValue = email.val();
+                    // var nameRegEx = /^[^\\\/&]*$/;
+                    // var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    // var dataCheck = $('.data-check');
+
+                    // if (usernameValue === '' || usernameValue === null) {
+                    //     username.next(dataCheck).addClass('error');
+                    // } else if (usernameValue.match(nameRegEx)) {
+                    //     username.next($('error')).removeClass('error');
+                    // } else {
+                    //     username.next(dataCheck).addClass('error');
+                    // }
+
+                    // if (emailValue === '' || emailValue === null) {
+                    //     email.next(dataCheck).addClass('error');
+                    // } else if (emailValue.match(emailRegEx)) {
+                    //     email.next($('error')).removeClass('error');
+                    // } else {
+                    //     email.next(dataCheck).addClass('error');
+                    // }
+                    var login_status = quizEngine.validate_login(email, username);
+                    // console.log(login_status);
+                });
+
+            },
+            validate_login: function(uname, eaddr) {
+
+                var usernameValue = uname.val().toLowerCase();
+                var emailValue = eaddr.val();
+                var nameRegEx = /^[^\\\/&]*$/;
+                var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                var dataCheck = $('.data-check');
+                var usernameValid;
+                var emailValid;
+
+
+
+
+                if (usernameValue === '' || usernameValue === null) {
+                    uname.next(dataCheck).addClass('error');
+                    console.log('a valid')
+
+                } else if (usernameValue.match(nameRegEx)) {
+                    uname.next($('error')).removeClass('error');
+                    usernameValid = true;
+                    console.log('name valid')
+                } else {
+                    uname.next(dataCheck).addClass('error');
+                    console.log('b valid')
+
+                }
+
+                if (emailValue === '' || emailValue === null) {
+                    eaddr.next(dataCheck).addClass('error');
+                } else if (emailValue.match(emailRegEx)) {
+                    eaddr.next($('error')).removeClass('error');
+                    emailValid = true;
+                    console.log('email valid')
+                } else {
+                    eaddr.next(dataCheck).addClass('error');
+                }
+
+                // if (usernameValid === null || usernameValid === "" || emailValid === null || emailValid === "") {
+                //     $('#login_needed').show();
+                //     console.log('all null');
+                //     return false;
+                // } else {
+                //     return true;
+                //     console.log('all valid');
+
+                // }
+
             }
+
         } //quizEngine end
 
     $.getJSON("js/quiz-data.json", function(data) {
@@ -170,5 +250,6 @@ $(document).ready(function() {
     });
 
     // quizEngine.run_quiz(); //to debug
+    quizEngine.check_login(); //to debug
 
 });
