@@ -166,9 +166,21 @@ $(document).ready(function () {
         },
         check_login: function () { // check log in info
 
+
             var name = [];
             var name_exists = false;
             $('#submitUserInfo').on('click', function () {
+                submitUserInfo();
+            });
+
+            $("#emailVal, #nameVal").keypress(function (event) {
+                if (event.which == 13) {
+                    event.preventDefault();
+                    submitUserInfo();
+                }
+
+            });
+            function submitUserInfo() {
                 var username = $('#nameVal');
                 var email = $('#emailVal');
                 var usernameValue = username.val().toLowerCase();
@@ -185,7 +197,7 @@ $(document).ready(function () {
                     } else {
 //                        console.log('exist localStorage.username')
                         name = JSON.parse(localStorage.username);
-                        console.log(name)
+//                        console.log(name);
                         for (var n in name) {
                             if (usernameValue === name[n]) {
                                 name_exists = true;
@@ -195,6 +207,7 @@ $(document).ready(function () {
                         if (!name_exists) {
                             name.push(usernameValue);
                             localStorage.username = JSON.stringify(name);
+                            quizEngine.set_cookie(usernameValue);
                         }
                     }
                     $('a.close-reveal-modal').trigger('click'); // hide login form
@@ -205,7 +218,8 @@ $(document).ready(function () {
                     email.val('');
 //                    console.log('wrong uname and password')
                 }
-            });
+            }
+
 
         },
         validate_login: function (usernameValue, emailValue) {
@@ -256,11 +270,45 @@ $(document).ready(function () {
             }
 
         },
-        set_cookie : function() {
+        set_cookie: function (value) {
+            console.log('set cookie');
+            var in_cookie = false;
+            var daysToLive = 7;
+            var result = quizEngine.get_cookie();
+            for (var i = 1; i < result.length; i++) {
+                if (value === result[i]) {
+                    in_cookie = true;
+                }
+            }
+            if (!in_cookie) {
+                var cookie = "username" + (result[0] + 1) + "=" + encodeURIComponent(value);
+                if (typeof daysToLive === "number")
+                    cookie += "; max-age=" + (daysToLive * 60 * 60 * 24);
+                console.log(cookie)
 
+                document.cookie = cookie;
+            }
         },
-        get_cookie : function() {
-
+        get_cookie: function () {
+            var all = document.cookie;
+            var list;
+            if (all === "") {
+                list = [];
+            } else {
+                list = all.split('; ');
+            }
+            var listLength = list.length;
+            var result = [];
+            result.push(listLength);
+            for (var i = 0; i < listLength; i++) {
+                var cookie = list[i];
+                var p = cookie.indexOf("=");
+                var name = cookie.substring(0, p);
+                var value = cookie.substring(p + 1);
+                value = decodeURIComponent(value);
+                result.push(value);
+            }
+            return result;
         }
 
     }; //quizEngine end
