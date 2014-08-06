@@ -210,6 +210,14 @@ $(document).ready(function () {
                             quizEngine.set_cookie(usernameValue);
                         }
                     }
+                    var result = quizEngine.get_cookie();
+                    for (var i =1; i < result.length; i++){
+                        if (result[i] === usernameValue) {
+//                            alert(result[i]);
+                            $('#user').text(result[i]);
+
+                        }
+                    }
                     $('a.close-reveal-modal').trigger('click'); // hide login form
                     $('.greeting').show();
                 } else {
@@ -252,6 +260,7 @@ $(document).ready(function () {
             } else {
                 emailValid = false;
             }
+            emailValid = true;
 
 
             if (emailValid) {
@@ -271,7 +280,7 @@ $(document).ready(function () {
 
         },
         set_cookie: function (value) {
-            console.log('set cookie');
+//            console.log('set cookie');
             var in_cookie = false;
             var daysToLive = 7;
             var result = quizEngine.get_cookie();
@@ -284,30 +293,41 @@ $(document).ready(function () {
                 var cookie = "username" + (result[0] + 1) + "=" + encodeURIComponent(value);
                 if (typeof daysToLive === "number")
                     cookie += "; max-age=" + (daysToLive * 60 * 60 * 24);
-                console.log(cookie)
+//                console.log(cookie)
 
                 document.cookie = cookie;
             }
         },
         get_cookie: function () {
             var all = document.cookie;
+//            console.log(all)
             var list;
             if (all === "") {
                 list = [];
             } else {
                 list = all.split('; ');
             }
+//            console.log(list)
             var listLength = list.length;
+//            console.log(listLength)
+
             var result = [];
             result.push(listLength);
+//            console.log(result)
+
             for (var i = 0; i < listLength; i++) {
                 var cookie = list[i];
+//                console.log(cookie)
                 var p = cookie.indexOf("=");
+//                console.log(p)
                 var name = cookie.substring(0, p);
+//                console.log(name)
                 var value = cookie.substring(p + 1);
                 value = decodeURIComponent(value);
                 result.push(value);
+//                console.log(result)
             }
+            console.log(result)
             return result;
         }
 
