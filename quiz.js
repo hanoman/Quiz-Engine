@@ -222,7 +222,7 @@ $(document).ready(function () {
             } else {
                 emailValid = false;
             }
-            emailValid = true;
+            emailValid = true; // remove this line to enable email verification
 
 
             if (emailValid) {
