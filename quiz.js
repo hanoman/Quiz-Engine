@@ -1,46 +1,14 @@
 $(document).ready(function () {
 
-    // define questions
-    // var allQuestions = [{
-    //     question: '"Somebody poisoned the waterhole".This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?',
-    //     choices: ['Toy Story', 'Toy Story 2', 'Toy Story 3'],
-    //     correctAnswer: 0,
-    //     userAnswer: ''
-    // }, {
-    //     question: 'Oh, I know it\'s a rock, I know. But let\'s just pretend for a minute that it\'s a seed, alright? This hilarious phrase is from which Pixar film?',
-    //     choices: ['Up', 'Finding Nemo', 'A Bug\'s Life'],
-    //     correctAnswer: 2,
-    //     userAnswer: ''
-    // }, {
-    //     question: 'Kids these days. They just don\'t get scared like they used to.',
-    //     choices: ['Monster, Inc', 'The Incredibles', 'Monster University', 'A Bug\'s Life'],
-    //     correctAnswer: 0,
-    //     userAnswer: ''
-    // }, {
-    //     question: '\'P. Sherman, 42 Wallaby Way, Sydney\'. In which movie does this quote appear?',
-    //     choices: ['Monster, Inc', 'Finding Nemo', 'Incredibles', 'Monster University'],
-    //     correctAnswer: 1,
-    //     userAnswer: ''
-    // }, {
-    //     question: '\'Greater good?\' I am your wife! I am the greatest \'good\' you are ever gonna get! Which Pixar films contains this quote?',
-    //     choices: ['The Incredibles', 'Monster University', 'A Bug\'s Life', 'Up'],
-    //     correctAnswer: 3,
-    //     userAnswer: ''
-    // }];
-    // uncomment to debug
-
     // get static html elements and define global nextBtn element
     var questionsEl = $('#question'),
         answerEl = $('#answers'),
         scoreEl = $('#score-wrapper');
 
     var quizEngine = {
-
         currentQuestionIndex: 0,
         score: 0,
         run_quiz: function () { // runs to print each question
-
-
             if (this.currentQuestionIndex < allQuestions.length) { //check if it's the last questions or not
                 this.clear_question();
                 this.print_question();
@@ -136,6 +104,11 @@ $(document).ready(function () {
                 errorMsg.removeClass('hidden');
             }
             quizEngine.load_answer();
+
+            if (quizEngine.currentQuestionIndex > 0) { //Hide greering message on the 2nd question
+                $('.greeting').hide();
+            }
+
         },
         prev_question: function () { // go to previous question
             quizEngine.currentQuestionIndex--;
@@ -187,21 +160,14 @@ $(document).ready(function () {
                 var emailValue = email.val();
                 var login_status = quizEngine.validate_login(usernameValue, emailValue);
                 if (login_status) {
-//                    console.log('login true')
                     if (!localStorage.username) {
-//                        console.log('no localStorage.username')
                         name.push(usernameValue);
                         localStorage.username = JSON.stringify(name);
-//                        console.log(usernameValue)
-//                        console.log(name)
                     } else {
-//                        console.log('exist localStorage.username')
                         name = JSON.parse(localStorage.username);
-//                        console.log(name);
                         for (var n in name) {
                             if (usernameValue === name[n]) {
                                 name_exists = true;
-//                                console.log('name exists')
                             }
                         }
                         if (!name_exists) {
@@ -211,20 +177,16 @@ $(document).ready(function () {
                         }
                     }
                     var result = quizEngine.get_cookie();
-                    for (var i =1; i < result.length; i++){
+                    for (var i = 1; i < result.length - 1; i++) { // Display greeting if username is in array
                         if (result[i] === usernameValue) {
-//                            alert(result[i]);
                             $('#user').text(result[i]);
-
+                            $('.greeting').show();
                         }
                     }
                     $('a.close-reveal-modal').trigger('click'); // hide login form
-                    $('.greeting').show();
                 } else {
-//                    console.log('login false')
                     username.val('');
                     email.val('');
-//                    console.log('wrong uname and password')
                 }
             }
 
@@ -270,17 +232,14 @@ $(document).ready(function () {
             }
 
             if (emailValid && usernameValid) {
-                // console.log('all valid');
                 return true;
             } else {
                 $('#login_needed').show();
-                // console.log('all null');
                 return false;
             }
 
         },
         set_cookie: function (value) {
-//            console.log('set cookie');
             var in_cookie = false;
             var daysToLive = 7;
             var result = quizEngine.get_cookie();
@@ -293,41 +252,31 @@ $(document).ready(function () {
                 var cookie = "username" + (result[0] + 1) + "=" + encodeURIComponent(value);
                 if (typeof daysToLive === "number")
                     cookie += "; max-age=" + (daysToLive * 60 * 60 * 24);
-//                console.log(cookie)
 
                 document.cookie = cookie;
             }
         },
         get_cookie: function () {
             var all = document.cookie;
-//            console.log(all)
             var list;
             if (all === "") {
                 list = [];
             } else {
                 list = all.split('; ');
             }
-//            console.log(list)
             var listLength = list.length;
-//            console.log(listLength)
 
             var result = [];
             result.push(listLength);
-//            console.log(result)
 
             for (var i = 0; i < listLength; i++) {
                 var cookie = list[i];
-//                console.log(cookie)
                 var p = cookie.indexOf("=");
-//                console.log(p)
                 var name = cookie.substring(0, p);
-//                console.log(name)
                 var value = cookie.substring(p + 1);
                 value = decodeURIComponent(value);
                 result.push(value);
-//                console.log(result)
             }
-            console.log(result)
             return result;
         }
 

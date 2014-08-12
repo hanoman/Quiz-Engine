@@ -30,3 +30,7 @@ visibility: hidden;
 .greeting {
     display: none;
 }
+.greeting h2 {
+    font-size: 16px;
+    font-weight: 100;
+}
