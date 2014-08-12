@@ -53,7 +53,7 @@ $(document).ready(function () {
         },
         print_next_btn: function () { // print next button
             $(document.createElement('a')).attr({
-                class: "button tiny radius",
+                class: "button tiny box",
                 href: "#",
                 id: "next-btn"
             })
@@ -66,7 +66,7 @@ $(document).ready(function () {
         },
         print_back_btn: function () { // print back button
             $(document.createElement('a')).attr({
-                class: "button tiny radius",
+                class: "button tiny box",
                 href: "",
                 id: "back-btn"
             })
