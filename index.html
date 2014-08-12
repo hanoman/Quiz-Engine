@@ -11,43 +11,35 @@
     <script src="js/foundation.min.js"></script>
     <script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
     <script src="js/vendor/modernizr.js"></script>
-    <script id="quiz-template" type="x-handlebars-template">
 
+    <script id="quiz-template" type="x-handlebars-template">
         <div class="greeting">
             <h2>Welcome, <span id="user"></span> !</h2>
         </div>
-
         <div class="row">
             <div class="columns large-12">
                 <div id="question"><h4>{{ question }}</h4></div>
             </div>
         </div>
-
         <div class="row">
             <div class="columns large-12 ">
                 {{> answer}}
                 <!-- <small class="error">Invalid entry</small> -->
             </div>
         </div>
-
         <div class="row">
             <div class="columns large-12">
                 <div class="button-wrapper"></div>
                 <div id="score-wrapper"></div>
             </div>
         </div>
-
-
-
     </script>
 
     <script id="quiz-answer" type="x-handlebars-template">
         <form action="" id="answers">
-            {{choices}}
-
-            {{#list choices}}
-            {{/list}}
-
+            {{#each choices}}
+                <input value="{{this}}" type="radio" name="currentAnswer" class="radio-answer" id="choice_{{@index}}"><label for="choice_{{@index}}">{{this}}</label><br>
+            {{/each}}
         </form>
     </script>
 
@@ -107,7 +99,7 @@
                 return ret + "</ul>";
             });
 
-            $("#quizContent").append (theTemplate(quizData.allData[1]));
+            $("#quizContent").append (theTemplate(quizData.allData[0]));
 
         });
 

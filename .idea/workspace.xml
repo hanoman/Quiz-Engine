@@ -5,7 +5,7 @@
     <ignored path="jsQuiz.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/quiz.js" changelist="228c5d95-4448-48df-a52b-e5e3bb2f508b" time="1407366583486" ignored="false" />
-    <file path="/index.html" changelist="228c5d95-4448-48df-a52b-e5e3bb2f508b" time="1407855260059" ignored="false" />
+    <file path="/index.html" changelist="228c5d95-4448-48df-a52b-e5e3bb2f508b" time="1407877437327" ignored="false" />
     <file path="/dummy.xml" changelist="228c5d95-4448-48df-a52b-e5e3bb2f508b" time="1406999790024" ignored="false" />
     <file path="/app.css" changelist="228c5d95-4448-48df-a52b-e5e3bb2f508b" time="1407855186329" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +26,26 @@
     <favorites_list name="jsQuiz" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="28" selection-start="950" selection-end="950" vertical-scroll-proportion="0.225">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quiz.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quiz.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="37" selection-start="1663" selection-end="1673" vertical-scroll-proportion="-20.16">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -38,8 +57,8 @@
       <list>
         <option value="$PROJECT_DIR$/js/quiz-data.json" />
         <option value="$PROJECT_DIR$/css/app.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/quiz.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -50,10 +69,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1296" />
+    <option name="height" value="1010" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -81,7 +100,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -116,6 +134,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -156,14 +175,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="1358" y="-8" width="1296" height="1010" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19015151" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20664506" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -325,9 +344,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/quiz-data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="1" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="26" column="1" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/app.css">
@@ -337,16 +354,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.033088237">
+        <state line="37" column="37" selection-start="1663" selection-end="1673" vertical-scroll-proportion="-20.16">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="28" selection-start="9608" selection-end="9608" vertical-scroll-proportion="1.7368422">
+        <state line="25" column="28" selection-start="950" selection-end="950" vertical-scroll-proportion="0.225">
           <folding />
         </state>
       </provider>
