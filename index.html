@@ -12,30 +12,33 @@
     <script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
     <script src="js/vendor/modernizr.js"></script>
 
-    <script id="quiz-template" type="x-handlebars-template">
-        <div class="greeting">
-            <h2>Welcome, <span id="user"></span> !</h2>
-        </div>
-        <div class="row">
-            <div class="columns large-12">
-                <div id="question"><h4>{{ question }}</h4></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns large-12 ">
-                {{> answer}}
-                <!-- <small class="error">Invalid entry</small> -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="columns large-12">
-                <div class="button-wrapper"></div>
-                <div id="score-wrapper"></div>
-            </div>
-        </div>
-    </script>
 
-    <script id="quiz-answer" type="x-handlebars-template">
+
+    <!--Handlebars Template-->
+    <!--<script id="quiz-template" type="x-handlebars-template">-->
+        <!--<div class="greeting">-->
+            <!--<h2>Welcome, <span id="user"></span> !</h2>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="columns large-12">-->
+                <!--<div id="question"><h4>{{ question }}</h4></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="columns large-12 ">-->
+                <!--{{> answer}}-->
+                <!--&lt;!&ndash; <small class="error">Invalid entry</small> &ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="columns large-12">-->
+                <!--<div class="button-wrapper"></div>-->
+                <!--<div id="score-wrapper"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</script>-->
+
+    <script id="quiz-answer-template" type="x-handlebars-template">
         <form action="" id="answers">
             {{#each choices}}
                 <input value="{{this}}" type="radio" name="currentAnswer" class="radio-answer" id="choice_{{@index}}"><label for="choice_{{@index}}">{{this}}</label><br>
@@ -49,61 +52,51 @@
     </script>
 
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">-->
 
 
-        $(function  () {
-            var quizData = {allData:[
-                {
-                    "question": "\"Somebody poisoned the waterhole\".This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?",
-                    "choices": ["Toy Story", "Toy Story 2", "Toy Story 3"],
-                    "correctAnswer": 0
-                },
-                {
-                    "question": "Oh, I know it\"s a rock, I know. But let\"s just pretend for a minute that it\"s a seed, alright? This hilarious phrase is from which Pixar film?",
-                    "choices": ["Up", "Finding Nemo", "A Bug\"s Life"],
-                    "correctAnswer": 2
-                },
-                {
-                    "question": "Kids these days. They just don\"t get scared like they used to.",
-                    "choices": ["Monster, Inc", "The Incredibles", "Monster University", "A Bug\"s Life"],
-                    "correctAnswer": 0
-                },
-                {
-                    "question": "\"P. Sherman, 42 Wallaby Way, Sydney\". In which movie does this quote appear?",
-                    "choices": ["Monster, Inc", "Finding Nemo", "Incredibles", "Monster University"],
-                    "correctAnswer": 1
-                },
-                {
-                    "question": "\"Greater good?\" I am your wife! I am the greatest \"good\" you are ever gonna get! Which Pixar films contains this quote?",
-                    "choices": ["The Incredibles", "Monster University", "A Bug\"s Life", "Up"],
-                    "correctAnswer": 3
-                }
-            ]};
+        <!--$(function  () {-->
+            <!--var quizData = {allData:[-->
+                <!--{-->
+                    <!--"question": "\"Somebody poisoned the waterhole\".This is a classic Woody line, said when Sid pulls his string. Which of these Toy Story films is it from?",-->
+                    <!--"choices": ["Toy Story", "Toy Story 2", "Toy Story 3"],-->
+                    <!--"correctAnswer": 0-->
+                <!--},-->
+                <!--{-->
+                    <!--"question": "Oh, I know it\"s a rock, I know. But let\"s just pretend for a minute that it\"s a seed, alright? This hilarious phrase is from which Pixar film?",-->
+                    <!--"choices": ["Up", "Finding Nemo", "A Bug\"s Life"],-->
+                    <!--"correctAnswer": 2-->
+                <!--},-->
+                <!--{-->
+                    <!--"question": "Kids these days. They just don\"t get scared like they used to.",-->
+                    <!--"choices": ["Monster, Inc", "The Incredibles", "Monster University", "A Bug\"s Life"],-->
+                    <!--"correctAnswer": 0-->
+                <!--},-->
+                <!--{-->
+                    <!--"question": "\"P. Sherman, 42 Wallaby Way, Sydney\". In which movie does this quote appear?",-->
+                    <!--"choices": ["Monster, Inc", "Finding Nemo", "Incredibles", "Monster University"],-->
+                    <!--"correctAnswer": 1-->
+                <!--},-->
+                <!--{-->
+                    <!--"question": "\"Greater good?\" I am your wife! I am the greatest \"good\" you are ever gonna get! Which Pixar films contains this quote?",-->
+                    <!--"choices": ["The Incredibles", "Monster University", "A Bug\"s Life", "Up"],-->
+                    <!--"correctAnswer": 3-->
+                <!--}-->
+            <!--]};-->
 
-            //Get the HTML from the template   in the script tag
-            var theTemplateScript = $("#quiz-template").html();
 
-            //Compile the template
-            var theTemplate = Handlebars.compile (theTemplateScript);
+            <!--//Get the HTML from the template   in the script tag-->
+            <!--var theTemplateScript = $("#quiz-template").html();-->
 
-            Handlebars.registerPartial("answer", $("#quiz-answer").html());
+            <!--//Compile the template-->
+            <!--var theTemplate = Handlebars.compile (theTemplateScript);-->
+            <!--Handlebars.registerPartial("answer", $("#quiz-answer").html());-->
 
-            Handlebars.registerHelper('list', function(context, options) {
-                var ret = "<ul>";
+            <!--$("#quizContent").append (theTemplate(quizData.allData[0]));-->
 
-                for(var i=0, j=context.length; i<j; i++) {
-                    ret = ret + "<li>" + options.fn(context[i]) + "</li>";
-                }
+        <!--});-->
 
-                return ret + "</ul>";
-            });
-
-            $("#quizContent").append (theTemplate(quizData.allData[0]));
-
-        });
-
-    </script>
+    <!--</script>-->
 </head>
 
 <body>
@@ -162,7 +155,7 @@
             </div>
         </div>
 
-        <div id="quizContent"></div>
+        <!--<div id="quizContent"></div>-->
     </div>
 
 </div>

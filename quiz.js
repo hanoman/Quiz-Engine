@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    var questionTemplateScript = $("#question-template").html();
+    var questionTemplate = Handlebars.compile(questionTemplateScript);
+
+    var answerTemplateScript = $("#quiz-answer-template").html();
+    var answerTemplate = Handlebars.compile(answerTemplateScript);
+
     // get static html elements and define global nextBtn element
     var questionsEl = $('#question'),
         answerEl = $('#answers'),
@@ -25,24 +31,28 @@ $(document).ready(function () {
             $('.button-wrapper').hide().empty();
         },
         print_question: function () { // print questions
-            var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
-            $('#question').fadeIn().html(questionString);
+//            var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
+//            $('#question').fadeIn().html(questionString)
+
+            $("#question").append(questionTemplate(allQuestions[this.currentQuestionIndex])).fadeIn(); // handlebars template
         },
         print_answers: function () { // print answers
-            var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
-            for (i = 0; i < numberOfAnswer; i++) {
-                var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
-                $(document.createElement('input')).attr({
-                    value: choiceValue,
-                    type: "radio",
-                    name: "currentAnswer",
-                    class: "radio-answer",
-                    id: "choice_" + i
-                }).appendTo(answerEl);
-                $(document.createElement('label')).attr({
-                    for: "choice_" + i
-                }).html(choiceValue).add("<br>").appendTo(answerEl);
-            }
+//            var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
+//            for (i = 0; i < numberOfAnswer; i++) {
+//                var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
+//                $(document.createElement('input')).attr({
+//                    value: choiceValue,
+//                    type: "radio",
+//                    name: "currentAnswer",
+//                    class: "radio-answer",
+//                    id: "choice_" + i
+//                }).appendTo(answerEl);
+//                $(document.createElement('label')).attr({
+//                    for: "choice_" + i
+//                }).html(choiceValue).add("<br>").appendTo(answerEl);
+//            }
+            $("#answers").append(answerTemplate(allQuestions[this.currentQuestionIndex])).fadeIn(); // handlebars template
+
             $(document.createElement('small')).attr({
                 class: 'error hidden'
             }).html("Choose an answer").appendTo(answerEl);
