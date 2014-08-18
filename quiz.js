@@ -31,26 +31,9 @@ $(document).ready(function () {
             $('.button-wrapper').hide().empty();
         },
         print_question: function () { // print questions
-//            var questionString = '<h4>' + allQuestions[this.currentQuestionIndex].question + '</h4>';
-//            $('#question').fadeIn().html(questionString)
-
             $("#question").append(questionTemplate(allQuestions[this.currentQuestionIndex])).fadeIn(); // handlebars template
         },
         print_answers: function () { // print answers
-//            var numberOfAnswer = allQuestions[this.currentQuestionIndex].choices.length; //get all the answer options
-//            for (i = 0; i < numberOfAnswer; i++) {
-//                var choiceValue = allQuestions[this.currentQuestionIndex].choices[i];
-//                $(document.createElement('input')).attr({
-//                    value: choiceValue,
-//                    type: "radio",
-//                    name: "currentAnswer",
-//                    class: "radio-answer",
-//                    id: "choice_" + i
-//                }).appendTo(answerEl);
-//                $(document.createElement('label')).attr({
-//                    for: "choice_" + i
-//                }).html(choiceValue).add("<br>").appendTo(answerEl);
-//            }
             $("#answers").append(answerTemplate(allQuestions[this.currentQuestionIndex])).fadeIn(); // handlebars template
 
             $(document.createElement('small')).attr({
